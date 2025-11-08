@@ -16,17 +16,22 @@ static int is_move(const char* s) {
 }
 
 const char* rps_winner(const char* p1, const char* p2) {
-    // keep existing behavior:
-    // 1) Same move -> "Draw"
-    if (same(p1, p2)) return "Draw";
+    // validate
+    if (!is_move(p1) || !is_move(p2))
+        return "Invalid";
 
-    // 2) Only rule implemented so far: Rock beats Scissors -> "Player1"
-    if (p1 && p2 && strcmp(p1, ROCK) == 0 && strcmp(p2, SCISSORS) == 0)
+    // same move ? Draw
+    if (same(p1, p2))
+        return "Draw";
+
+    // Player1 wins cases
+    if ((strcmp(p1, ROCK) == 0 && strcmp(p2, SCISSORS) == 0) ||
+        (strcmp(p1, SCISSORS) == 0 && strcmp(p2, PAPER) == 0) ||
+        (strcmp(p1, PAPER) == 0 && strcmp(p2, ROCK) == 0))
         return "Player1";
 
-    // 3) Everything else -> "Invalid" (for now)
-    //    (We also added is_move() for future steps, but not used yet to avoid behavior change.)
-    return "Invalid";
+    // otherwise Player2 wins
+    return "Player2";
 }
 
 
