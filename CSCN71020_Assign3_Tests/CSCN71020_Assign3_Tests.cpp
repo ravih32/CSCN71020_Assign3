@@ -23,5 +23,13 @@ namespace CSCN71020_Assign3_Tests
             Assert::AreEqual(std::string("Draw"), std::string(out2));
             Assert::AreEqual(std::string("Draw"), std::string(out3));
         }
+
+        // ?? Add this new test (RED)
+        TEST_METHOD(RockBeatsScissors_Player1Wins)
+        {
+            const char* out = rps_winner("Rock", "Scissors");
+            Assert::AreEqual(std::string("Player1"), std::string(out));
+        }
     };
 }
+
