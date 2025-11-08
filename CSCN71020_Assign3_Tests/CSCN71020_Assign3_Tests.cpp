@@ -30,6 +30,24 @@ namespace CSCN71020_Assign3_Tests
             const char* out = rps_winner("Rock", "Scissors");
             Assert::AreEqual(std::string("Player1"), std::string(out));
         }
+        TEST_METHOD(ScissorsBeatsPaper_Player1Wins)
+        {
+            const char* out = rps_winner("Scissors", "Paper");
+            Assert::AreEqual(std::string("Player1"), std::string(out));
+        }
+
+        TEST_METHOD(PaperBeatsRock_Player1Wins)
+        {
+            const char* out = rps_winner("Paper", "Rock");
+            Assert::AreEqual(std::string("Player1"), std::string(out));
+        }
+
+        TEST_METHOD(RockLosesToPaper_Player2Wins)
+        {
+            const char* out = rps_winner("Rock", "Paper");
+            Assert::AreEqual(std::string("Player2"), std::string(out));
+        }
+
     };
 }
 
